@@ -19,7 +19,7 @@ try
     $psWindowsUpdatePath = "$ENV:Temp\PSWindowsUpdate.zip"
    
 
-    Get-WUInstall -AcceptAll -IgnoreReboot -IgnoreUserInput -NotCategory "Language packs"
+    
     if (Get-WURebootStatus -Silent)
     {
         $Host.UI.RawUI.WindowTitle = "Updates installation finished. Rebooting."
