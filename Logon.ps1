@@ -20,13 +20,8 @@ try
    
 
     
-    if (Get-WURebootStatus -Silent)
-    {
-        $Host.UI.RawUI.WindowTitle = "Updates installation finished. Rebooting."
-        shutdown /r /t 0
-    }
-    else
-    {
+   
+    
         $Host.UI.RawUI.WindowTitle = "Downloading Cloudbase-Init..."
 
         $osArch = (Get-WmiObject  Win32_OperatingSystem).OSArchitecture
@@ -67,7 +62,7 @@ try
         $Host.UI.RawUI.WindowTitle = "Running Sysprep..."
         $unattendedXmlPath = "$programFilesDir\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
         & "$ENV:SystemRoot\System32\Sysprep\Sysprep.exe" `/generalize `/oobe `/shutdown `/unattend:"$unattendedXmlPath"
-    }
+    
 }
 catch
 {
