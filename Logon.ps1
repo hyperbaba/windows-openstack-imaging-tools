@@ -17,7 +17,7 @@ try
     }
 
     $psWindowsUpdatePath = "$ENV:Temp\PSWindowsUpdate.zip"
-    (new-object System.Net.WebClient).DownloadFile($psWindowsUpdateUrl, $psWindowsUpdatePath)
+    <!--(new-object System.Net.WebClient).DownloadFile($psWindowsUpdateUrl, $psWindowsUpdatePath)-->
 
     $Host.UI.RawUI.WindowTitle = "Installing PSWindowsUpdate..."
     foreach($item in (New-Object -com shell.application).NameSpace($psWindowsUpdatePath).Items())
