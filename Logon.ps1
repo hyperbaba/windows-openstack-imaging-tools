@@ -17,19 +17,7 @@ try
     }
 
     $psWindowsUpdatePath = "$ENV:Temp\PSWindowsUpdate.zip"
-    <!--(new-object System.Net.WebClient).DownloadFile($psWindowsUpdateUrl, $psWindowsUpdatePath)-->
-
-    $Host.UI.RawUI.WindowTitle = "Installing PSWindowsUpdate..."
-    foreach($item in (New-Object -com shell.application).NameSpace($psWindowsUpdatePath).Items())
-    {
-        $yesToAll = 16
-        (New-Object -com shell.application).NameSpace("$ENV:SystemRoot\System32\WindowsPowerShell\v1.0\Modules").copyhere($item, $yesToAll)
-    }
-    del $psWindowsUpdatePath
-
-    Import-Module PSWindowsUpdate
-
-    $Host.UI.RawUI.WindowTitle = "Installing updates..."
+   
 
     Get-WUInstall -AcceptAll -IgnoreReboot -IgnoreUserInput -NotCategory "Language packs"
     if (Get-WURebootStatus -Silent)
